@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+
+import PropTypes from "prop-types";
+import "./App.css";
+import ContactForm from "./components/ContactForm/ContactForm";
+import ContactList from "./components/ContactList/ContactList";
+import Filter from "./components/Filter/Filter";
 
 function App() {
+    
+
+  //   const checkContact = contacts.find((contact) =>
+  //     contact.name.includes(stateName)
+  //   );
+
+  //   if (checkContact) {
+  //     alert("its contact already added");
+  //   } else {
+  //     setContacts([newContact, ...contacts]);
+  //   }
+  // };
+
+  // const findContact = () => {
+  //   const normalizetext = filter.toLowerCase();
+
+  //   return contacts.filter((contact) =>
+  //     contact.name.toLowerCase().includes(normalizetext)
+  //   );
+  // };
+
+
+
+  // let visibleContact = filter.length === 0 ? contacts : findContact();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="mainSection">
+      <h1 className="mainTitle">
+        <span className="logo">P</span>honebook
+      </h1>
+      <ContactForm />
+
+      <h2 className="mainTitle">Contacts</h2>
+      <Filter /> 
+      <ContactList /> 
+    </section>
   );
 }
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  filter: PropTypes.string,
+};
 
 export default App;

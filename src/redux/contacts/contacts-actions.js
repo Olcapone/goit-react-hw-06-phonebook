@@ -11,4 +11,21 @@ const addContact = ({ stateName, number }) => ({
     }
 });
 
-export default { addContact };
+const deleteContact = (name) => ({
+    type: types.DELETE,
+    payload: name
+});
+
+const changeFilter = (value) => ({
+    type: types.CHANGE_FILTER,
+    payload: value
+});
+
+ const findContact = ({value, contacts}) => ({
+     type: types.FIND,
+     payload: contacts.filter((contact) =>
+              contact.name.toLowerCase().includes(value.toLowerCase())
+     )
+ });
+
+export default { addContact, deleteContact, changeFilter, findContact };
