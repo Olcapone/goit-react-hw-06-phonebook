@@ -19,17 +19,6 @@ function App() {
   //   }
   // };
 
-  // const findContact = () => {
-  //   const normalizetext = filter.toLowerCase();
-
-  //   return contacts.filter((contact) =>
-  //     contact.name.toLowerCase().includes(normalizetext)
-  //   );
-  // };
-
-
-
-  // let visibleContact = filter.length === 0 ? contacts : findContact();
 
   return (
     <section className="mainSection">
