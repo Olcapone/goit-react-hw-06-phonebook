@@ -24,14 +24,9 @@ import s from "./ContactList.module.css";
   );
 };
 
-const mapStateToProps = state => {
-  const { filter, items } = state.contacts;
-  const visibleContact = getContact(filter, items);
-
-  return {
-    contact: visibleContact
-  }
-};
+const mapStateToProps = ({contacts: {filter, items}}) => ({
+    contact:  getContact(filter, items) 
+});
 
 const mapDispatchToProps = dispatch => ({
   onDelete: (name)=> dispatch(contactActions.deleteContact(name))
