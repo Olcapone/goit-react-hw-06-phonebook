@@ -7,19 +7,6 @@ import Filter from "./components/Filter/Filter";
 
 function App() {
     
-
-  //   const checkContact = contacts.find((contact) =>
-  //     contact.name.includes(stateName)
-  //   );
-
-  //   if (checkContact) {
-  //     alert("its contact already added");
-  //   } else {
-  //     setContacts([newContact, ...contacts]);
-  //   }
-  // };
-
-
   return (
     <section className="mainSection">
       <h1 className="mainTitle">
@@ -44,3 +31,5 @@ App.propTypes = {
 };
 
 export default App;
+
+
