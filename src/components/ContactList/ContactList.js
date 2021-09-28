@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import contactActions from '../../redux/contacts/contacts-actions';
+import getContact from '../../utils/getContact';
 import shortid from "shortid";
 import s from "./ContactList.module.css";
 
@@ -23,9 +24,14 @@ import s from "./ContactList.module.css";
   );
 };
 
-const mapStateToProps = state => ({
-  contact: state.contacts.items
-});
+const mapStateToProps = state => {
+  const { filter, items } = state.contacts;
+  const visibleContact = getContact(filter, items);
+
+  return {
+    contact: visibleContact
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   onDelete: (name)=> dispatch(contactActions.deleteContact(name))

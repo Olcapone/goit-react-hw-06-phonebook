@@ -21,11 +21,5 @@ const changeFilter = (value) => ({
     payload: value
 });
 
- const findContact = ({value, contacts}) => ({
-     type: types.FIND,
-     payload: contacts.filter((contact) =>
-              contact.name.toLowerCase().includes(value.toLowerCase())
-     )
- });
 
-export default { addContact, deleteContact, changeFilter, findContact };
+export default { addContact, deleteContact, changeFilter };
