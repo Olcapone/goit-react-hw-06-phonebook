@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from './contacts-actions';
-import checkContact from '../../utils/checkContact';
+
 
 const initialState = {
     contacts: {
@@ -18,7 +18,8 @@ const initialState = {
 };
 
 const items = createReducer(initialState.contacts.items, {
-    [actions.addContact]: (state, { payload }) => [...state, payload],
+    [actions.addContact]: (state, { payload }) =>  state.find((contact) => contact.name.includes(payload.name)) ? state : [...state, payload], 
+    
     [actions.deleteContact]: (state, { payload }) => state.filter(({ name }) => name !== payload)   
 });
 

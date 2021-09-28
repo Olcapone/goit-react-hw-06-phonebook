@@ -1,5 +1,4 @@
-const getContact = ( value, contacts ) => {
-   
+const getContact = (value, contacts) => {   
     const normalizetext = value.toLowerCase();
       
     return contacts.filter(({name}) =>
