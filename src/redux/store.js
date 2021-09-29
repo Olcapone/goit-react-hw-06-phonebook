@@ -1,17 +1,18 @@
 
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import contactReducers from './contacts/contacts-reducer';
+
 import {
     persistStore,
     persistReducer,
-  //  FLUSH,
- //   REHYDRATE,
- //   PAUSE,
-   // PERSIST,
-  //  PURGE,
- //   REGISTER
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER
 } from 'redux-persist';
-//import logger from 'redux-logger';
+import logger from 'redux-logger';
 import storage from 'redux-persist/lib/storage';// defaults to localStorage for web
 
 const contactPersistConfig = {
@@ -24,17 +25,17 @@ const store = configureStore({
     reducer: {
         contacts:  persistReducer(contactPersistConfig, contactReducers)
             },
-    // middlebar:[...getDefaultMiddleware({
-    //     serializableCheck: {
-    //         ignoredActions: [   FLUSH,
-    //                             REHYDRATE,
-    //                             PAUSE,
-    //                             PERSIST,
-    //                             PURGE,
-    //                             REGISTER
-    //         ]
-    // }
-    // }), logger],
+    middleware: [...getDefaultMiddleware({
+         serializableCheck: {
+             ignoredActions: [   FLUSH,
+                                 REHYDRATE,
+                                 PAUSE,
+                                 PERSIST,
+                                 PURGE,
+                                 REGISTER
+             ]
+     }
+     }), logger],
     devTools: process.env.NODE_ENV === 'development'
     
 });
