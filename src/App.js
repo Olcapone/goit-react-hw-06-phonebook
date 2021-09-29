@@ -1,5 +1,5 @@
 
-import PropTypes from "prop-types";
+
 import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
@@ -8,6 +8,7 @@ import Filter from "./components/Filter/Filter";
 function App() {
     
   return (
+   
     <section className="mainSection">
       <h1 className="mainTitle">
         <span className="logo">P</span>honebook
@@ -16,19 +17,12 @@ function App() {
 
       <h2 className="mainTitle">Contacts</h2>
       <Filter /> 
-      <ContactList /> 
-    </section>
+      <ContactList />
+  
+    </section>    
+ 
   );
 }
-
-App.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })
-  ),
-  filter: PropTypes.string,
-};
 
 export default App;
 

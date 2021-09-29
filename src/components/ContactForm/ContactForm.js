@@ -1,4 +1,5 @@
-import React, {  useState  } from "react";
+import React, { useState } from "react";
+
 import { connect } from "react-redux";
 import contactActions from '../../redux/contacts/contacts-actions';
 import PropTypes from "prop-types";
@@ -17,17 +18,19 @@ function ContactForm({ onSubmit }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "name") {
-      setName(value);
-    } else if (name === "number") {
-      setNumber(value);
+    if (name !== 0) {
+        if (name === "name") {
+        setName(value);
+          } else if (name === "number") {
+            setNumber(value);
     }
+    }
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ stateName, number });
-
     reset();
   };
 
