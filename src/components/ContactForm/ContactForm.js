@@ -1,13 +1,13 @@
-//import React, {  useEffect, useState  } from "react";
+import React, {  useState  } from "react";
 import { connect } from "react-redux";
 import contactActions from '../../redux/contacts/contacts-actions';
 import PropTypes from "prop-types";
 import s from "./ContactForm.module.css";
-import useLocalStorage from "../../utils/UseLocalStorage";
+
 
 function ContactForm({ onSubmit }) {
-  const [stateName, setName] = useLocalStorage("stateName", "");
-  const [number, setNumber] = useLocalStorage("number", "");
+  const [stateName, setName] = useState("");
+  const [number, setNumber] = useState("");
 
   const reset = () => {
     setName("");
@@ -31,7 +31,6 @@ function ContactForm({ onSubmit }) {
     reset();
   };
 
-  // render() {
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       <label className={s.label}>

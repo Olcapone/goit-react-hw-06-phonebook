@@ -22,13 +22,11 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    contacts: contactReducers
+    contacts:  persistReducer(persistConfig, contactReducers)
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
 const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middlebar:[...getDefaultMiddleware({
         serializableCheck: {
             ignoredActions: [   FLUSH,
