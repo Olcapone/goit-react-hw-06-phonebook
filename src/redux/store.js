@@ -1,5 +1,5 @@
 
-import { configureStore, combineReducers, applyMiddleware, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, applyMiddleware, getDefaultMiddleware } from '@reduxjs/toolkit';
 import contactReducers from './contacts/contacts-reducer';
 import {
     persistStore,
@@ -14,19 +14,16 @@ import {
 import logger from 'redux-logger';
 import storage from 'redux-persist/lib/storage';// defaults to localStorage for web
 
-
-
-const persistConfig = {
-    key: 'root',
+const contactPersistConfig = {
+    key: 'contacts',
     storage,
+    blacklist: ['filter']
 };
 
-const rootReducer = combineReducers({
-    contacts:  persistReducer(persistConfig, contactReducers)
-});
-
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+        contacts:  persistReducer(contactPersistConfig, contactReducers)
+            },
     middlebar:[...getDefaultMiddleware({
         serializableCheck: {
             ignoredActions: [   FLUSH,
